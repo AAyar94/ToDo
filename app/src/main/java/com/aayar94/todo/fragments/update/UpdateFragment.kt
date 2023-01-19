@@ -16,23 +16,29 @@ import com.aayar94.todo.fragments.SharedViewModel
 
 
 class UpdateFragment : Fragment() {
-    private lateinit var mBinding: FragmentUpdateBinding
+    private var _binding: FragmentUpdateBinding? = null
+    private val binding get() = _binding!!
+
     private val args by navArgs<UpdateFragmentArgs>()
+
+
     private val mSharedViewModel: SharedViewModel by viewModels()
     private val mToDoViewModel: ToDoViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentUpdateBinding.inflate(inflater, container, false)
-        mBinding.currentEtTitle.setText(args.currentItem.title)
-        mBinding.currentEtDescription.setText(args.currentItem.description)
-        mBinding.currentSpinnerPriorities.setSelection(mSharedViewModel.parsePriorityToInt(args.currentItem.priority))
-        mBinding.currentSpinnerPriorities.onItemSelectedListener = mSharedViewModel.listener
+        _binding = FragmentUpdateBinding.inflate(inflater, container, false)
+
+        binding.args = args
+        //spinner item selected listener
+        binding.currentSpinnerPriorities.onItemSelectedListener = mSharedViewModel.listener
+
+
         setHasOptionsMenu(true)
 
         // Inflate the layout for this fragment
-        return mBinding.root
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -65,9 +71,9 @@ class UpdateFragment : Fragment() {
     }
 
     private fun updateItem() {
-        val title = mBinding.currentEtTitle.text.toString()
-        val description = mBinding.currentEtDescription.text.toString()
-        val getPriority = mBinding.currentSpinnerPriorities.selectedItem.toString()
+        val title = binding.currentEtTitle.text.toString()
+        val description = binding.currentEtDescription.text.toString()
+        val getPriority = binding.currentSpinnerPriorities.selectedItem.toString()
 
         val validation = mSharedViewModel.verifyDataFromUser(title, description)
         if (validation) {
@@ -84,6 +90,12 @@ class UpdateFragment : Fragment() {
             Toast.makeText(requireContext(), "Please fill out all fields", Toast.LENGTH_SHORT)
                 .show()
         }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
