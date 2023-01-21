@@ -1,16 +1,30 @@
 <resources>
-    <string name="app_name">ToDo</string>
+    <string name="app_name" translatable="false">ToDo</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="search">Search</string>
     <string name="add">Add</string>
     <string name="save">Save</string>
+    <string name="Successfully_Added">Successfully Added</string>
+    <string name="please_fill_out_all_fields">Please fill out all fields</string>
+    <string name="Deleted">Deleted</string>
+    <string name="Undo">Undo</string>
+    <string name="Yes">Yes</string>
+    <string name="Successfully_removed_everything">Successfully Removed Everything!</string>
+    <string name="Delete_everything">Delete everything?</string>
+    <string name="No">No</string>
+    <string name="Are_u_sure_delete_everything">Are u sure want to remove everything?</string>
+    <string name="Updated">Updated</string>
+    <string name="HighPriority">High Priority</string>
+    <string name="MediumPriority">Medium Priority</string>
+    <string name="LowPriority">Low Priority</string>
+    <string name="update">Update</string>
 
     <string-array name="priprities">
-        <item>High Priority</item>
-        <item>Medium Priority</item>
-        <item>Low Priority</item>
+        <item>@string/HighPriority</item>
+        <item>@string/MediumPriority</item>
+        <item>@string/LowPriority</item>
     </string-array>
 </resources>

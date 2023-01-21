@@ -1,6 +1,5 @@
 package com.aayar94.todo.fragments.update
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -13,6 +12,7 @@ import com.aayar94.todo.data.models.ToDoData
 import com.aayar94.todo.data.viewmodel.ToDoViewModel
 import com.aayar94.todo.databinding.FragmentUpdateBinding
 import com.aayar94.todo.fragments.SharedViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class UpdateFragment : Fragment() {
@@ -54,8 +54,8 @@ class UpdateFragment : Fragment() {
     }
 
     private fun confirmItemRemoval() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _, _ ->
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setPositiveButton(getString(R.string.Yes)) { _, _ ->
             mToDoViewModel.deleteItem(args.currentItem)
             Toast.makeText(
                 requireContext(), "Succesfully Removed : ${args.currentItem.title}",
@@ -64,7 +64,7 @@ class UpdateFragment : Fragment() {
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
 
-        builder.setNegativeButton("No") { _, _ -> }
+        builder.setNegativeButton(getString(R.string.No)) { _, _ -> }
         builder.setTitle("Delete '${args.currentItem.title}'?")
         builder.setMessage("Are u sure want to remove '${args.currentItem.title}'")
         builder.create().show()
@@ -84,10 +84,14 @@ class UpdateFragment : Fragment() {
                 description
             )
             mToDoViewModel.updateData(updatedItem)
-            Toast.makeText(requireContext(), "Updated", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.Updated), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.please_fill_out_all_fields),
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
     }

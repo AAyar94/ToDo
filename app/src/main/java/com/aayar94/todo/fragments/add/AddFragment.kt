@@ -54,10 +54,10 @@ class AddFragment : Fragment() {
                 0, mTitle, mSharedViewModel.parsePriority(mPriority), mDescription
             )
             mToDoViewModel.insertData(newData)
-            Toast.makeText(requireContext(), "Seccesfully Added", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.Successfully_Added), Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.please_fill_out_all_fields), Toast.LENGTH_LONG).show()
         }
 
 

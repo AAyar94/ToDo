@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.aayar94.todo.fragments.list.ListFragment"
-        android:label="ToDo List"
+        android:label="ToDo"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_addFragment"
@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.aayar94.todo.fragments.add.AddFragment"
-        android:label="Add"
+        android:label="@string/add"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_listFragment"
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.aayar94.todo.fragments.update.UpdateFragment"
-        android:label="Update"
+        android:label="@string/update"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_listFragment"

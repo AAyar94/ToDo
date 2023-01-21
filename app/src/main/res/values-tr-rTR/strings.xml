@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Başlık</string>
+    <string name="description">Açıklama</string>
+    <string name="search">Ara</string>
+    <string name="add">Ekle</string>
+    <string name="save">Kaydet</string>
+    <string name="Successfully_Added">Başarıyla eklendi</string>
+    <string name="please_fill_out_all_fields">Lütfen bütün boşlukları doldurun</string>
+    <string name="Deleted">Silindi</string>
+    <string name="Undo">Geri al</string>
+    <string name="Yes">Evet</string>
+    <string name="Successfully_removed_everything">Her şey başarılı bir şekilde silindi</string>
+    <string name="Delete_everything">Her şey silinsin mi?</string>
+    <string name="No">Hayır</string>
+    <string name="Are_u_sure_delete_everything">Her şeyi silmek istediğine emin misin?</string>
+    <string name="Updated">Güncellendi</string>
+    <string name="HighPriority">Yüksek Öncelikli</string>
+    <string name="MediumPriority">Orta Öncelikli</string>
+    <string name="LowPriority">Düşük Öncelikli</string>
+    <string name="update">Güncelle</string>
+
+
+</resources>

@@ -19,6 +19,10 @@ import com.aayar94.todo.databinding.FragmentListBinding
 import com.aayar94.todo.fragments.SharedViewModel
 import com.aayar94.todo.fragments.list.adapter.ListAdapter
 import com.google.android.material.snackbar.Snackbar
+import jp.wasabeef.recyclerview.animators.FadeInDownAnimator
+import jp.wasabeef.recyclerview.animators.LandingAnimator
+import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
 class ListFragment : Fragment() {
@@ -70,6 +74,9 @@ class ListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.itemAnimator = FadeInDownAnimator().apply {
+            addDuration = 300
+        }
 
         swipeToDelete(recyclerView)
     }
@@ -92,10 +99,10 @@ class ListFragment : Fragment() {
 
     private fun restoreDeletedData(view: View, deletedItem: ToDoData, position: Int) {
         val snackbar = Snackbar.make(
-            view, "Deleted '${deletedItem.title}'",
+            view, getString(R.string.Deleted) +" '${deletedItem.title}'",
             Snackbar.LENGTH_LONG
         )
-        snackbar.setAction("Undo") {
+        snackbar.setAction(getString(R.string.Undo)) {
             mToDoViewModel.insertData(deletedItem)
             //adapter.notifyItemChanged(position)
         }
@@ -115,18 +122,18 @@ class ListFragment : Fragment() {
 
     private fun confirmRemovalAll() {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _, _ ->
+        builder.setPositiveButton(getString(R.string.Yes)) { _, _ ->
             mToDoViewModel.deleteAll()
             Toast.makeText(
-                requireContext(), "Succesfully Removed Everything!",
+                requireContext(), getString(R.string.Successfully_removed_everything),
                 Toast.LENGTH_SHORT
             ).show()
 
         }
 
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete everything?")
-        builder.setMessage("Are u sure want to remove everything?")
+        builder.setNegativeButton(getString(R.string.No)) { _, _ -> }
+        builder.setTitle(getString(R.string.Delete_everything))
+        builder.setMessage(getString(R.string.Are_u_sure_delete_everything))
         builder.create().show()
     }
 
