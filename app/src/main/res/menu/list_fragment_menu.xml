@@ -11,19 +11,19 @@
     <group>
         <item
             android:id="@+id/sorttBy"
-            android:title="SortBy">
+            android:title="@string/sortby">
             <menu>
                 <item
                     android:id="@+id/menu_priority_high"
-                    android:title="Priority High" />
+                    android:title="@string/priority_high_menu" />
                 <item
                     android:id="@+id/menu_priority_low"
-                    android:title="Priority Low" />
+                    android:title="@string/priority_low_menu" />
             </menu>
 
         </item>
     </group>
     <item android:id="@+id/delete_all"
         app:showAsAction="never"
-        android:title="Delete All"/>
+        android:title="@string/delete_all"/>
 </menu>

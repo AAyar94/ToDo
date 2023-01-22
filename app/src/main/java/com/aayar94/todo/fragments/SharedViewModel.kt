@@ -62,20 +62,22 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun parsePriority(priority: String): Priority {
+        val highPriority = getApplication<Application>().getString(R.string.HighPriority)
+        val mediumPriority = getApplication<Application>().getString(R.string.MediumPriority)
+        val lowPriority =getApplication<Application>().getString(R.string.LowPriority)
         return when (priority) {
-            "High Priority" -> {
+            highPriority -> {
                 Priority.HIGH
             }
-            "Medium Priority" -> {
+            mediumPriority -> {
                 Priority.MEDIUM
             }
-            "Low Priority" -> {
+            lowPriority -> {
                 Priority.LOW
             }
             else -> Priority.LOW
         }
     }
-
 
 
 }

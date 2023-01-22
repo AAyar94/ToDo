@@ -80,4 +80,11 @@ dependencies {
 
 //recyclerView animator
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+
+
+    //new splash screen api
+
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
+    implementation 'com.airbnb.android:lottie:5.2.0'
 }

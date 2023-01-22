@@ -19,6 +19,11 @@
     <string name="MediumPriority">Orta Öncelikli</string>
     <string name="LowPriority">Düşük Öncelikli</string>
     <string name="update">Güncelle</string>
+    <string name="sortby">Sırala</string>
+    <string name="priority_high_menu">Önce Yüksek Öncelikli</string>
+    <string name="priority_low_menu">Önce Düşük Öncelikli</string>
+    <string name="delete_all">Tümünü Sil</string>
+    <string name="delete">Sil</string>
 
 
 </resources>

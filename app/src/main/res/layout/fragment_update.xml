@@ -56,6 +56,7 @@
             android:background="@drawable/custom_input"
             android:ems="10"
             android:gravity="left|top"
+            android:hint="@string/description"
             android:inputType="textMultiLine"
             android:paddingStart="24dp"
             android:paddingTop="16sp"

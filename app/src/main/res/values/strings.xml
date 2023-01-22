@@ -21,6 +21,11 @@
     <string name="MediumPriority">Medium Priority</string>
     <string name="LowPriority">Low Priority</string>
     <string name="update">Update</string>
+    <string name="sortby">Sort By</string>
+    <string name="priority_high_menu">Priority High</string>
+    <string name="priority_low_menu">Priority Low</string>
+    <string name="delete_all">Delete All</string>
+    <string name="delete">Delete</string>
 
     <string-array name="priprities">
         <item>@string/HighPriority</item>
