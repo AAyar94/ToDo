@@ -26,6 +26,11 @@
     <string name="priority_low_menu">Priority Low</string>
     <string name="delete_all">Delete All</string>
     <string name="delete">Delete</string>
+    <string name="feedback">Feedback</string>
+    <string name="exit_from_app">Exit from app</string>
+    <string name="successfully_removed">Successfully Removed : </string>
+    <string name="are_u_sure">\"Are u sure want to remove \"</string>
+    <string name="no_data">No Data</string>
 
     <string-array name="priprities">
         <item>@string/HighPriority</item>

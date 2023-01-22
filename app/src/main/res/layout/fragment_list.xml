@@ -62,7 +62,7 @@
             android:layout_marginTop="12dp"
             android:alpha="0.5"
             android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
-            android:text="No Data"
+            android:text="@string/no_data"
             android:textSize="16sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"

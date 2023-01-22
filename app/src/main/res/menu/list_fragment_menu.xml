@@ -11,6 +11,7 @@
     <group>
         <item
             android:id="@+id/sorttBy"
+            android:icon="@drawable/ic_sort"
             android:title="@string/sortby">
             <menu>
                 <item
@@ -23,7 +24,24 @@
 
         </item>
     </group>
-    <item android:id="@+id/delete_all"
-        app:showAsAction="never"
-        android:title="@string/delete_all"/>
+    <item
+        android:id="@+id/delete_all"
+        android:icon="@drawable/ic_delete"
+        android:iconTint="@color/black"
+        android:title="@string/delete_all"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_feedback"
+        android:icon="@drawable/ic_feedback"
+        android:iconTint="@color/black"
+        android:title="@string/feedback"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/exit_from_app"
+        android:icon="@drawable/ic_exit"
+        android:iconTint="@color/black"
+        android:title="@string/exit_from_app"
+        app:showAsAction="never" />
+
+
 </menu>

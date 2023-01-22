@@ -24,6 +24,11 @@
     <string name="priority_low_menu">Önce Düşük Öncelikli</string>
     <string name="delete_all">Tümünü Sil</string>
     <string name="delete">Sil</string>
+    <string name="feedback">Geri Bildirim</string>
+    <string name="exit_from_app">Uygulamadan Çık</string>
+    <string name="successfully_removed">"Başarıyla silindi : "</string>
+    <string name="are_u_sure">"Silmek istediğine emin misin : "</string>
+    <string name="no_data">Öğe yok</string>
 
 
 </resources>

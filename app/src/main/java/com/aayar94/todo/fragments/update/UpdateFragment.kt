@@ -1,8 +1,10 @@
 package com.aayar94.todo.fragments.update
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -41,8 +43,10 @@ class UpdateFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.update_fragment_menu, menu)
+        if (menu is MenuBuilder) (menu as MenuBuilder).setOptionalIconsVisible(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,15 +62,15 @@ class UpdateFragment : Fragment() {
         builder.setPositiveButton(getString(R.string.Yes)) { _, _ ->
             mToDoViewModel.deleteItem(args.currentItem)
             Toast.makeText(
-                requireContext(), "Succesfully Removed : ${args.currentItem.title}",
+                requireContext(), getString(R.string.successfully_removed)+" ${args.currentItem.title}",
                 Toast.LENGTH_SHORT
             ).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
 
         builder.setNegativeButton(getString(R.string.No)) { _, _ -> }
-        builder.setTitle("Delete '${args.currentItem.title}'?")
-        builder.setMessage("Are u sure want to remove '${args.currentItem.title}'")
+        builder.setTitle(getString(R.string.delete) +" '${args.currentItem.title}'?")
+        builder.setMessage(getString(R.string.are_u_sure)+" '${args.currentItem.title}'")
         builder.create().show()
     }
 

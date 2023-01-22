@@ -2,10 +2,13 @@ package com.aayar94.todo.fragments.list
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.aayar94.todo.BuildConfig
 import com.aayar94.todo.R
 import com.aayar94.todo.data.models.ToDoData
 import com.aayar94.todo.data.viewmodel.ToDoViewModel
@@ -22,6 +25,7 @@ import com.aayar94.todo.fragments.SharedViewModel
 import com.aayar94.todo.fragments.list.adapter.ListAdapter
 import com.google.android.material.snackbar.Snackbar
 import jp.wasabeef.recyclerview.animators.FadeInDownAnimator
+import kotlin.system.exitProcess
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentListBinding? = null
@@ -71,7 +75,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
-            LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.itemAnimator = FadeInDownAnimator().apply {
             addDuration = 300
         }
@@ -107,8 +111,10 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         snackbar.show()
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_fragment_menu, menu)
+        if (menu is MenuBuilder) (menu as MenuBuilder).setOptionalIconsVisible(true)
         val search: MenuItem = menu.findItem(R.id.menu_search)
         val searchView: SearchView? = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
@@ -125,6 +131,16 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             R.id.menu_priority_low -> mToDoViewModel.sortByLowPriority.observe(
                 this,
                 Observer { adapter.setData(it) })
+            R.id.menu_feedback -> {
+                val feedbackIntent = Intent(Intent.ACTION_VIEW)
+                val i =
+                    "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
+                feedbackIntent.data = Uri.parse(i)
+                startActivity(feedbackIntent)
+            }
+            R.id.exit_from_app -> {
+                exitProcess(0)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
