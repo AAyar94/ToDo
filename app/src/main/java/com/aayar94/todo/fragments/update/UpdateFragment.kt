@@ -46,7 +46,7 @@ class UpdateFragment : Fragment() {
     @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.update_fragment_menu, menu)
-        if (menu is MenuBuilder) (menu as MenuBuilder).setOptionalIconsVisible(true)
+        if (menu is MenuBuilder) menu.setOptionalIconsVisible(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

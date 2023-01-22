@@ -116,7 +116,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_fragment_menu, menu)
-        if (menu is MenuBuilder) (menu as MenuBuilder).setOptionalIconsVisible(true)
+        if (menu is MenuBuilder) menu.setOptionalIconsVisible(true)
         val search: MenuItem = menu.findItem(R.id.menu_search)
         val searchView: SearchView? = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true

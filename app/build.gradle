@@ -4,7 +4,6 @@ plugins {
     id('kotlin-kapt')
     id('androidx.navigation.safeargs.kotlin')
     id('kotlin-parcelize')
-
 }
 
 android {
@@ -36,15 +35,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    sourceSets {
-        main {
-            kotlin {
-                srcDirs += 'build/generated/source/navigation-args'
-            }
-        }
-    }
+
 }
 
 dependencies {
@@ -80,7 +73,6 @@ dependencies {
 
 //recyclerView animator
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
-
 
 
     implementation 'com.airbnb.android:lottie:5.2.0'
