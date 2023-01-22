@@ -37,7 +37,7 @@
             android:clickable="true"
             android:navigateToAddFragment="@{true}"
             android:src="@drawable/ic_add"
-            android:tint="@color/white"
+            app:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

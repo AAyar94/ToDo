@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aayar94.todo.BuildConfig
 import com.aayar94.todo.R
 import com.aayar94.todo.data.models.ToDoData
@@ -75,7 +76,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+                //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.itemAnimator = FadeInDownAnimator().apply {
             addDuration = 300
         }

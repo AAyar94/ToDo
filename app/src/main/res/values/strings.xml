@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">ToDo</string>
+    <string name="app_name" translatable="false">To Do</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="title">Title</string>
