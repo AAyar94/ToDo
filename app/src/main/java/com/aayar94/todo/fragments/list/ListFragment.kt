@@ -53,7 +53,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         setupRecyclerView()
 
 
-
         mToDoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)

@@ -24,8 +24,9 @@
     <color name="yellow">#F7B501</color>
     <color name="green">#50DF91</color>
 
-    <color name="item_background_color">#E0F2F1</color>
-    <color name="dynamic_text_color">#242424</color>
-    <color name="splash_bg">#FFFFFF</color>
-    <color name="drawabletintcolor">#242424</color>
+    <color name="item_background_color">#2B1E4A</color>
+    <color name="dynamic_text_color">#D3D3D3</color>
+    <color name="splash_bg">#000000</color>
+    <color name="drawabletintcolor">#D3D3D3</color>
+
 </resources>
