@@ -9,8 +9,11 @@ import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -24,8 +27,8 @@ import com.aayar94.todo.data.viewmodel.ToDoViewModel
 import com.aayar94.todo.databinding.FragmentListBinding
 import com.aayar94.todo.fragments.SharedViewModel
 import com.aayar94.todo.fragments.list.adapter.ListAdapter
+import com.aayar94.todo.utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
-import jp.wasabeef.recyclerview.animators.FadeInDownAnimator
 import kotlin.system.exitProcess
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -54,6 +57,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         mToDoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
+            binding.recyclerView.scheduleLayoutAnimation()
         })
 
 
@@ -66,21 +70,48 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             findNavController().navigate(R.id.action_listFragment_to_updateFragment2)
         }
 
-        setHasOptionsMenu(true)
 
-
+        // Hide soft keyboard
+        hideKeyboard(requireActivity())
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.list_fragment_menu, menu)
 
+                val search = menu.findItem(R.id.menu_search)
+                val searchView = search.actionView as? SearchView
+                searchView?.isSubmitButtonEnabled = true
+                searchView?.setOnQueryTextListener(this@ListFragment)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.delete_all -> confirmRemovalAll()
+                    R.id.menu_priority_high ->
+                        mToDoViewModel.sortByHighPriority.observe(viewLifecycleOwner) {
+                            adapter.setData(it)
+                        }
+                    R.id.menu_priority_low ->
+                        mToDoViewModel.sortByLowPriority.observe(viewLifecycleOwner) {
+                            adapter.setData(it)
+                        }
+                    android.R.id.home -> requireActivity().onBackPressed()
+                }
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+    }
     private fun setupRecyclerView() {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
-            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-                //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        recyclerView.itemAnimator = FadeInDownAnimator().apply {
-            addDuration = 300
-        }
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         swipeToDelete(recyclerView)
     }
@@ -94,14 +125,14 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
                 // Toast.makeText(requireContext(), "Succesfully Removed '${itemToDelete.title}'", Toast.LENGTH_LONG).show()
 
-                restoreDeletedData(viewHolder.itemView, itemToDelete, viewHolder.adapterPosition)
+                restoreDeletedData(viewHolder.itemView, itemToDelete)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallBack)
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-    private fun restoreDeletedData(view: View, deletedItem: ToDoData, position: Int) {
+    private fun restoreDeletedData(view: View, deletedItem: ToDoData) {
         val snackbar = Snackbar.make(
             view, getString(R.string.Deleted) + " '${deletedItem.title}'",
             Snackbar.LENGTH_LONG
@@ -113,6 +144,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         snackbar.show()
     }
 
+    @Deprecated("Deprecated in Java")
     @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_fragment_menu, menu)
@@ -124,6 +156,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.delete_all -> confirmRemovalAll()
