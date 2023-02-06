@@ -14,7 +14,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aayar94.todo.BuildConfig
@@ -24,6 +23,7 @@ import com.aayar94.todo.data.viewmodel.ToDoViewModel
 import com.aayar94.todo.databinding.FragmentListBinding
 import com.aayar94.todo.fragments.SharedViewModel
 import com.aayar94.todo.fragments.list.adapter.ListAdapter
+import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import jp.wasabeef.recyclerview.animators.FadeInDownAnimator
 import kotlin.system.exitProcess
@@ -45,6 +45,13 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mSharedViewModel = mSharedViewModel
+
+
+        val window = activity?.window
+        val color = SurfaceColors.SURFACE_2.getColor(requireContext())
+        window!!.statusBarColor = color // Set color of system statusBar same as ActionBar
+        window.navigationBarColor =
+            color // Set color of system navigationBar same as BottomNavigationView
 
 
         setupRecyclerView()
@@ -76,8 +83,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
-            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-                //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.itemAnimator = FadeInDownAnimator().apply {
             addDuration = 300
         }
