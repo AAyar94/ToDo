@@ -24,6 +24,6 @@
     <color name="yellow">#F7B501</color>
     <color name="green">#50DF91</color>
 
-    <color name="backgroundColor">#FFFFFF</color>
-    <color name="apptintColor">#000000</color>
+    <color name="backgroundColor">#404040</color>
+    <color name="apptintColor">#FFFFFF</color>
 </resources>

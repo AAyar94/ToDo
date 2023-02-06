@@ -17,13 +17,14 @@ class AddFragment : Fragment() {
     private val mToDoViewModel: ToDoViewModel by viewModels()
     private val mSharedViewModel: SharedViewModel by viewModels()
 
-    private lateinit var binding: FragmentAddBinding
+    private var mbinding: FragmentAddBinding? = null
+    private val binding get() = mbinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentAddBinding.inflate(inflater, container, false)
+        //binding = FragmentAddBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         binding.spinnerPriorities.onItemSelectedListener = mSharedViewModel.listener
         // Inflate the layout for this fragment
@@ -54,13 +55,26 @@ class AddFragment : Fragment() {
                 0, mTitle, mSharedViewModel.parsePriority(mPriority), mDescription
             )
             mToDoViewModel.insertData(newData)
-            Toast.makeText(requireContext(), getString(R.string.Successfully_Added), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Successfully_Added),
+                Toast.LENGTH_LONG
+            ).show()
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), getString(R.string.please_fill_out_all_fields), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.please_fill_out_all_fields),
+                Toast.LENGTH_LONG
+            ).show()
         }
 
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mbinding = null
     }
 
 

@@ -19,10 +19,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
+            style="@style/backgroundStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipChildren="false"
             android:paddingTop="8dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +39,7 @@
             android:clickable="true"
             android:navigateToAddFragment="@{true}"
             android:src="@drawable/ic_add"
-            app:tint="@color/white"
+            app:tint="@color/apptintColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

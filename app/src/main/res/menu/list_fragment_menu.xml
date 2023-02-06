@@ -4,14 +4,14 @@
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search"
-        android:iconTint="@color/white"
+        android:iconTint="@color/apptintColor"
         android:title="@string/search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
     <group>
         <item
             android:id="@+id/sorttBy"
-            android:icon="@drawable/ic_sort"
+            app:icon="@drawable/ic_sort"
             android:title="@string/sortby">
             <menu>
                 <item
@@ -27,19 +27,19 @@
     <item
         android:id="@+id/delete_all"
         android:icon="@drawable/ic_delete"
-        android:iconTint="@color/black"
+        app:iconTint="@color/apptintColor"
         android:title="@string/delete_all"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_feedback"
         android:icon="@drawable/ic_feedback"
-        android:iconTint="@color/black"
+        app:iconTint="@color/apptintColor"
         android:title="@string/feedback"
         app:showAsAction="never" />
     <item
         android:id="@+id/exit_from_app"
         android:icon="@drawable/ic_exit"
-        android:iconTint="@color/black"
+        app:iconTint="@color/apptintColor"
         android:title="@string/exit_from_app"
         app:showAsAction="never" />
 

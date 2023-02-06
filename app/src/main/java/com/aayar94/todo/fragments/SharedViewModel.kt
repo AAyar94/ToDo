@@ -1,7 +1,6 @@
 package com.aayar94.todo.fragments
 
 import android.app.Application
-import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
@@ -55,16 +54,13 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
 
     fun verifyDataFromUser(title: String, description: String): Boolean {
-        return if (TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
-            false
-        } else !(title.isEmpty() || description.isEmpty())
-
+        return !(title.isEmpty() || description.isEmpty())
     }
 
     fun parsePriority(priority: String): Priority {
         val highPriority = getApplication<Application>().getString(R.string.HighPriority)
         val mediumPriority = getApplication<Application>().getString(R.string.MediumPriority)
-        val lowPriority =getApplication<Application>().getString(R.string.LowPriority)
+        val lowPriority = getApplication<Application>().getString(R.string.LowPriority)
         return when (priority) {
             highPriority -> {
                 Priority.HIGH

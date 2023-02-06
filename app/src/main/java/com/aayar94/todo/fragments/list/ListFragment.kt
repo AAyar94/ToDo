@@ -23,7 +23,8 @@ import com.aayar94.todo.data.viewmodel.ToDoViewModel
 import com.aayar94.todo.databinding.FragmentListBinding
 import com.aayar94.todo.fragments.SharedViewModel
 import com.aayar94.todo.fragments.list.adapter.ListAdapter
-import com.google.android.material.elevation.SurfaceColors
+import com.aayar94.todo.utils.hideKeyboard
+import com.aayar94.todo.utils.observeOnce
 import com.google.android.material.snackbar.Snackbar
 import jp.wasabeef.recyclerview.animators.FadeInDownAnimator
 import kotlin.system.exitProcess
@@ -47,12 +48,12 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.mSharedViewModel = mSharedViewModel
 
 
-        val window = activity?.window
+        /** val window = activity?.window
         val color = SurfaceColors.SURFACE_2.getColor(requireContext())
         window!!.statusBarColor = color // Set color of system statusBar same as ActionBar
         window.navigationBarColor =
-            color // Set color of system navigationBar same as BottomNavigationView
-
+        color // Set color of system navigationBar same as BottomNavigationView
+         */
 
         setupRecyclerView()
 
@@ -75,6 +76,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         setHasOptionsMenu(true)
 
+        hideKeyboard(requireActivity())
 
         return binding.root
     }
@@ -101,21 +103,21 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
                 // Toast.makeText(requireContext(), "Succesfully Removed '${itemToDelete.title}'", Toast.LENGTH_LONG).show()
 
-                restoreDeletedData(viewHolder.itemView, itemToDelete, viewHolder.adapterPosition)
+                restoreDeletedData(viewHolder.itemView, itemToDelete)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallBack)
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-    private fun restoreDeletedData(view: View, deletedItem: ToDoData, position: Int) {
+    private fun restoreDeletedData(view: View, deletedItem: ToDoData) {
         val snackbar = Snackbar.make(
             view, getString(R.string.Deleted) + " '${deletedItem.title}'",
             Snackbar.LENGTH_LONG
         )
         snackbar.setAction(getString(R.string.Undo)) {
             mToDoViewModel.insertData(deletedItem)
-            //adapter.notifyItemChanged(position)
+            /**adapter.notifyItemChanged(position)*/
         }
         snackbar.show()
     }
@@ -193,7 +195,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
-        mToDoViewModel.searchDatabase(searchQuery).observe(this, Observer { list ->
+        mToDoViewModel.searchDatabase(searchQuery).observeOnce(viewLifecycleOwner, Observer { list ->
             list.let {
                 adapter.setData(it)
             }
