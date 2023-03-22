@@ -15,6 +15,10 @@ ToDo app; Kotlin, ROOM, Navigation Component, LiveData, ViewModel, Data Binding 
 
 ![Screenshot](https://androidwave.com/wp-content/uploads/2019/05/mvvm-architecture-app-in-android.png)
 
+## App Screens
+
+<img src="https://github.com/AAyar94/ToDo/blob/main/screenshots/screenshot_01.png" width="250" /> <img src="https://github.com/AAyar94/ToDo/blob/main/screenshots/screenshot_02.png" width="250" /> <img src="https://github.com/AAyar94/ToDo/blob/main/screenshots/screenshot_03.png" width="250" />
+
 ## Libraries 🛠 ⚙️
 - [Kotlin](https://github.com/JetBrains/kotlin) -> The Kotlin Programming Language.
 - [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle) -> Perform actions in response to a change in the lifecycle status of another component, such as activities and fragments.
