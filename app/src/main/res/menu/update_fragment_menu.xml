@@ -5,7 +5,7 @@
     android:id="@+id/menu_save"
     android:title="@string/save"
     android:icon="@drawable/ic_save"
-    app:iconTint="@color/drawabletintcolor"
+    app:iconTint="@color/drawableTintColor"
     app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_delete"

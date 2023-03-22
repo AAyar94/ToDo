@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search"
-        android:iconTint="@color/apptintColor"
+        android:iconTint="@color/appTintColor"
         android:title="@string/search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
@@ -27,19 +27,19 @@
     <item
         android:id="@+id/delete_all"
         android:icon="@drawable/ic_delete"
-        app:iconTint="@color/apptintColor"
+        app:iconTint="@color/appTintColor"
         android:title="@string/delete_all"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_feedback"
         android:icon="@drawable/ic_feedback"
-        app:iconTint="@color/apptintColor"
+        app:iconTint="@color/appTintColor"
         android:title="@string/feedback"
         app:showAsAction="never" />
     <item
         android:id="@+id/exit_from_app"
         android:icon="@drawable/ic_exit"
-        app:iconTint="@color/apptintColor"
+        app:iconTint="@color/appTintColor"
         android:title="@string/exit_from_app"
         app:showAsAction="never" />
 

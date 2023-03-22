@@ -27,7 +27,7 @@ class AddFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
-        //binding = FragmentAddBinding.inflate(inflater, container, false)
+        mbinding = FragmentAddBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         binding.spinnerPriorities.onItemSelectedListener = mSharedViewModel.listener
         // Inflate the layout for this fragment

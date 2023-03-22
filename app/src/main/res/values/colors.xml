@@ -23,4 +23,13 @@
     <color name="red">#F85A50</color>
     <color name="yellow">#F7B501</color>
     <color name="green">#50DF91</color>
+
+    <color name="item_background_color">#2B1E4A</color>
+    <color name="dynamic_text_color">#D3D3D3</color>
+    <color name="splash_bg">#000000</color>
+    <color name="drawableTintColor">#D3D3D3</color>
+
+
+    <color name="backgroundColor">#404040</color>
+    <color name="appTintColor">#FFFFFF</color>
 </resources>

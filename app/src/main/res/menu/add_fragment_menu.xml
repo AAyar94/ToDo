@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_add"
         android:icon="@drawable/ic_check"
-        app:iconTint="@color/drawabletintcolor"
+        app:iconTint="@color/drawableTintColor"
         android:title="@string/add"
         app:showAsAction="ifRoom" />
 </menu>
