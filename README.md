@@ -7,8 +7,6 @@ ToDo app; Kotlin, ROOM, Navigation Component, LiveData, ViewModel, Data Binding 
 ## I build this app with Udemy Course via Stefan Jovanovic (Android Developer/Designer)
 [Udemy Couse](https://www.udemy.com/share/103kWS3@mWsSfuNzVQRMe9yLMkJ2OjeCGvU2uW9hMhh51_AjNpwVEMdJYr1O7xXf63OVEzI5/)
 
-## And you can download from [Play Store](https://play.google.com/store/apps/details?id=com.aayar94.todo)
-
 ## Architecture 🏛
 
 **Model - View - ViewModel (MVVM)** is the industry recognized software architecture pattern that overcomes all drawbacks of MVP and MVC design patterns. MVVM suggests separating the data presentation logic(Views or UI) from the core business logic part of the application
